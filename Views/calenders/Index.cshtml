@@ -1,0 +1,54 @@
+﻿@model IEnumerable<_LeahyHealthProject.Models.calender>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron-fluid">
+        <h2 style="text-align:center">Add Appointment</h2>
+        <h4 style="text-align:center">Here you can add when your next appointment is.</h4>
+        <h4 style="text-align:center">As well as edit and delete it.</h4>
+        <hr />
+
+        <br />
+        <h4 style="text-align:center">My Next Appointment:</h4>
+
+            <table class="table-condensed" border="1" style="margin:0 auto">
+                <tr style="text-align:center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.userid }) |
+                            @*@Html.ActionLink("Details", "Details", new { id=item.userid }) |*@
+                            @Html.ActionLink("Delete", "Delete", new { id = item.userid })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <p>
+                <h5 style="text-align:center">@Html.ActionLink("Add New Appointment", "Create")</h5>
+            </p>
+    </div>
